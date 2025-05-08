@@ -51,8 +51,9 @@ for k in range(nFrames):
         break
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     resized = cv2.resize(gray, (1024, int(1024 / WHR)))
-    blurred = cv2.GaussianBlur(resized, (0, 0), 1024 / dotNum)
-    edges = cv2.Canny(np.uint8(blurred), 100, 200)
+    blurred = cv2.GaussianBlur(resized, (3, 3), 1024 / dotNum)
+    _, otsued = cv2.threshold(blurred,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
+    edges = cv2.Canny(np.uint8(otsued), 100, 200)
 
     # Find boundaries
     contours, _ = cv2.findContours(edges, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
