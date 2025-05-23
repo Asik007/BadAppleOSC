@@ -5,6 +5,8 @@ import numpy as np
 import time
 import matplotlib.pyplot as plt
 
+
+# todo: Refact almost all of this
 def plot_LR_xy(left_channel, right_channel):
     
     if np.sum(left_channel) == np.nan or np.sum(right_channel) == np.nan:
@@ -49,12 +51,7 @@ def plot_audio_as_xy(audio_file):
             right_channel = audio_data[1::2]
             
             plot_LR_xy(left_channel, right_channel)  # Call the plotting function
-            # Normalize the data for better visualization
-            
-            # left_channel = left_channel / np.max(np.abs(left_channel))
-            # right_channel = right_channel / np.max(np.abs(right_channel))
-            
-            # Plot the left channel as X and right channel as Y
+
             
             
 # Example usage
